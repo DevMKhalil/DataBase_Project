@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [NACT]
+    AUTHORIZATION [dbo];
+

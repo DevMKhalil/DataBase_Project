@@ -50,7 +50,7 @@ BEGIN TRY
             PRINT 'Script Name:    20171016123600_Initial_Setup.sql'
             PRINT 'Order Criteria: 20171016123600'
             PRINT 'Script Type:    pre'
-            PRINT 'Script Path:    C:\Users\NTG\source\repos\SSDTDataMigration\Samples\CustomSSDTMigrationScripts.Sample\Scripts\PreScripts\20171016123600_Initial_Setup.sql'
+            PRINT 'Script Path:    C:\Users\NTG\source\repos\BEJS_Core_DataBase\BEJS_Core_DataBase\Scripts\PreScripts\20171016123600_Initial_Setup.sql'
             PRINT 'Script Hash:    FtZ5yB+xpknBlTpdwS/yeQ=='
         
             PRINT ' > Start pre-script run....'
@@ -80,64 +80,6 @@ BEGIN TRY
             END
         
             PRINT 'Skip pre-script 20171016123600_Initial_Setup.sql (already executed)'
-        END
-    END
-
-    -- Only run scripts of type 'pre' if the database exists, otherwise skip. post scripts are always run.
-    IF @DBEXISTS=1 AND 'pre'='pre' AND OBJECT_ID(N'dbo._MigrationScriptsHistory', N'U') IS NOT NULL OR 'pre'='post'
-    BEGIN
-        -- Check if the script was already run in previous migrations
-        IF NOT EXISTS(SELECT *
-                        FROM dbo.[_MigrationScriptsHistory]
-                        WHERE [ScriptNameId] = 'PreScripts\20171017081000_StreetNotNullableWithDefaultValue.sql')
-        BEGIN
-            -- Run the new migration script
-            PRINT '------------------ RUN --------------------------'
-            PRINT 'Script Id:      PreScripts\20171017081000_StreetNotNullableWithDefaultValue.sql'
-            PRINT 'Script Name:    20171017081000_StreetNotNullableWithDefaultValue.sql'
-            PRINT 'Order Criteria: 20171017081000'
-            PRINT 'Script Type:    pre'
-            PRINT 'Script Path:    C:\Users\NTG\source\repos\SSDTDataMigration\Samples\CustomSSDTMigrationScripts.Sample\Scripts\PreScripts\20171017081000_StreetNotNullableWithDefaultValue.sql'
-            PRINT 'Script Hash:    /sx2QWViX8v12wPqfVk6DQ=='
-        
-            PRINT ' > Start pre-script run....'
-            exec('-- Update NULL entries with default values
-
-IF OBJECT_ID(N''dbo.Customer'', N''U'') IS NOT NULL
-BEGIN
-	UPDATE
-	  Customer
-	SET
-	  StreetName = ''undefined''
-	WHERE
-	  StreetName IS NULL;
-END
-')
-            PRINT ' > Finished pre-script run....'
-        
-            -- Register the script in the migration script history table to prevent duplicate runs
-            PRINT ' > Register script in migration history table.'
-            INSERT INTO dbo.[_MigrationScriptsHistory]
-            VALUES('PreScripts\20171017081000_StreetNotNullableWithDefaultValue.sql', GETDATE(), '/sx2QWViX8v12wPqfVk6DQ==')
-
-            PRINT '----------------- END RUN ------------------------'
-            PRINT '|'
-        END
-        ELSE
-        BEGIN
-            -- The script was already run. Check if script hash has changed meanwhile.
-            IF NOT EXISTS(SELECT *
-                            FROM dbo.[_MigrationScriptsHistory]
-                            WHERE [ScriptHash] = '/sx2QWViX8v12wPqfVk6DQ==')
-            BEGIN
-                IF 1!=0
-                    RAISERROR ('ERROR: The hash value for the pre migration script 20171017081000_StreetNotNullableWithDefaultValue.sql does not match with the origin registered and executed script.', 18, 1);
-                ELSE
-                    -- SEVERITY 0-9 is treated as warning
-                    RAISERROR ('WARNING: The hash value for the pre migration script 20171017081000_StreetNotNullableWithDefaultValue.sql does not match with the past registered and executed script.', 5, 1);
-            END
-        
-            PRINT 'Skip pre-script 20171017081000_StreetNotNullableWithDefaultValue.sql (already executed)'
         END
     END
 END TRY

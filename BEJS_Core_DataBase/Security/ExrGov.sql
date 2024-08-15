@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [ExrGov]
+    AUTHORIZATION [dbo];
+

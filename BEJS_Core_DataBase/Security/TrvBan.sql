@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [TrvBan]
+    AUTHORIZATION [dbo];
+

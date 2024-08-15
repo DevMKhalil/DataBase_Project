@@ -1,11 +1,10 @@
 ﻿{
   "PreScripts": {
     "ScriptBaseDirectory": "Scripts\\PreScripts",
-    //"ScriptNamePattern": "^(\\d{14})_(.*).sql",
-    "ScriptRecursiveSearch": true,
+    "ScriptRecursiveSearch": false,
     "GeneratedScriptPath": "Scripts\\RunPreScriptsGenerated.sql",
-    "ExecutionFilterMode": "count", // "all", "count", "days", "date"
-    "ExecutionFilterValue": "100",
+    "ExecutionFilterMode": "all",
+    "ExecutionFilterValue": "",
 
     "TreatScriptNamePatternMismatchAsError": true,
     "TreatHashMismatchAsError": true
@@ -13,11 +12,10 @@
 
   "PostScripts": {
     "ScriptBaseDirectory": "Scripts\\PostScripts",
-    //"ScriptNamePattern": "^(\\d{14})_(.*).sql",
-    "ScriptRecursiveSearch": true,
+    "ScriptRecursiveSearch": false,
     "GeneratedScriptPath": "Scripts\\RunPostScriptsGenerated.sql",
-    "ExecutionFilterMode": "count", // "all", "count", "days", "date"
-    "ExecutionFilterValue": "100",
+    "ExecutionFilterMode": "all",
+    "ExecutionFilterValue": "",
 
     "TreatScriptNamePatternMismatchAsError": true,
     "TreatHashMismatchAsError": true
@@ -26,10 +24,10 @@
   "ReferenceDataScripts": {
     "ScriptBaseDirectory": "Scripts\\ReferenceDataScripts",
     "ScriptNamePattern": "^(\\d+)_(.*).sql",
-    "ScriptRecursiveSearch": true,
+    "ScriptRecursiveSearch": false,
     "GeneratedScriptPath": "Scripts\\RunReferenceDataScriptsGenerated.sql",
-    "ExecutionFilterMode": "all", // "all", "count", "days", "date"
-    "ExecutionFilterValue": "100",
+    "ExecutionFilterMode": "all",
+    "ExecutionFilterValue": "",
 
     "TreatScriptNamePatternMismatchAsError": true,
     "TreatHashMismatchAsError": true

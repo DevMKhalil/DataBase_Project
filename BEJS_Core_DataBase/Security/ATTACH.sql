@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [ATTACH]
+    AUTHORIZATION [dbo];
+

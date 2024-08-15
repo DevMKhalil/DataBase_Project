@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [JCRT]
+    AUTHORIZATION [dbo];
+

@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [GUDR]
+    AUTHORIZATION [dbo];
+

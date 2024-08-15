@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [SecrLK]
+    AUTHORIZATION [dbo];
+

@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [JACT]
+    AUTHORIZATION [dbo];
+
