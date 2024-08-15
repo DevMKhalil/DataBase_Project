@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34916.146
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "BEJS_Core_DataBase", "BEJS_Core_DataBase\BEJS_Core_DataBase.sqlproj", "{BA54FF2D-1A63-46B9-BAA2-03330BF2DD83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA54FF2D-1A63-46B9-BAA2-03330BF2DD83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA54FF2D-1A63-46B9-BAA2-03330BF2DD83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA54FF2D-1A63-46B9-BAA2-03330BF2DD83}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{BA54FF2D-1A63-46B9-BAA2-03330BF2DD83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA54FF2D-1A63-46B9-BAA2-03330BF2DD83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA54FF2D-1A63-46B9-BAA2-03330BF2DD83}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B6BC5BD8-19FD-430F-921B-353410D11AEE}
+	EndGlobalSection
+EndGlobal
