@@ -584,6 +584,5 @@
     <Build Include="JACT\Sequences\RequestJudicialActionsSequence.sql" />
     <Build Include="EXR\Sequences\ExecutionRequestsSubmissionNoSequence.sql" />
     <Build Include="dbo\Tables\_MigrationScriptsHistory.sql" />
-    <Build Include="TrvBan\Tables\test.sql" />
   </ItemGroup>
 </Project>
