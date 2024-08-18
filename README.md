@@ -35,3 +35,12 @@ This chapter lists all prerequisites that have to be met to run the extension lo
 This project is customized based on an extension has been developed by consultants of [4tecture](https://www.4tecture.ch) based on their experience from many DevOps projects. Originally it was developed internally without public scope. However, we decided to make this open source so others can benefit, too. 
 
 Feedback is very welcome. Please open an issue on GitHub or send us a message through our website.
+
+## Update The DataBase
+you can copy the below lines save them in a text file change the extension to (Bat), fill in the data, and double-click to update DataBase
+
+@echo off
+cd "[the visual studio path in your machine]\Common7\IDE\Extensions\Microsoft\SQLDB\DAC"
+SqlPackage.exe /Action:Publish /SourceFile:"[the project path in your machine]\bin\Debug\BEJS_Core_DataBase.dacpac" /TargetConnectionString:"Server=[server name];Database=[DataBase Name];Integrated Security=true;Encrypt=False"
+pause
+
