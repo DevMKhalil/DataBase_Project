@@ -41,6 +41,6 @@ you can copy the below lines save them in a text file change the extension to (B
 
 @echo off
 cd "[the visual studio path in your machine]\Common7\IDE\Extensions\Microsoft\SQLDB\DAC"
-SqlPackage.exe /Action:Publish /SourceFile:"[the project path in your machine]\bin\Debug\BEJS_Core_DataBase.dacpac" /TargetConnectionString:"Server=[server name];Database=[DataBase Name];Integrated Security=true;Encrypt=False"
+SqlPackage.exe /Action:Publish /SourceFile:"[the project path in your machine]\bin\Debug\[ProjectName].dacpac" /TargetConnectionString:"Server=[server name];Database=[DataBase Name];Integrated Security=true;Encrypt=False"
 pause
 
