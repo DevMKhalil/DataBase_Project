@@ -71,7 +71,7 @@ BEGIN TRY
         PRINT 'Script Name:    1_Production.Location.sql'
         PRINT 'Order Criteria: 1'
         PRINT 'Script Type:    referencedata'
-        PRINT 'Script Path:    C:\Users\NTG\source\repos\BEJS_Core_DataBase\BEJS_Core_DataBase\Scripts\ReferenceDataScripts\1_Production.Location.sql'
+        PRINT 'Script Path:    C:\Users\NTG\source\repos\AdventureWorks_DataBase\AdventureWorks_DataBase\Scripts\ReferenceDataScripts\1_Production.Location.sql'
         PRINT 'Script Hash:    sC4/wK1y0UGTRbJnKnZaRg=='
         
         PRINT ' > Start referencedata-script run....'

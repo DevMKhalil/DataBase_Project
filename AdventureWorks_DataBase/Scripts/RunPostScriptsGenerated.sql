@@ -10,9 +10,9 @@ PRINT '                                                '
 PRINT '        empower your software solutions         '
 PRINT '                                                '
 
-PRINT '******************* pre scripts *******************'
+PRINT '******************* post scripts *******************'
 
--- Start transaction for all pre scripts
+-- Start transaction for all post scripts
 BEGIN TRANSACTION;
 BEGIN TRY
 
@@ -27,40 +27,40 @@ BEGIN TRY
 
     IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = @DBNAME)
     BEGIN
-        PRINT 'The database ' +  @DBNAME + ' does not yet exist. All pre deployment scripts will be skipped.'
+        PRINT 'The database ' +  @DBNAME + ' does not yet exist. All post deployment scripts will be skipped.'
         SET @DBEXISTS = 0
     END
     ELSE
     BEGIN
-        PRINT 'The database ' +  @DBNAME + ' already exists. pre deployment scripts will be executed.'
+        PRINT 'The database ' +  @DBNAME + ' already exists. post deployment scripts will be executed.'
         SET @DBEXISTS = 1
     END
 
     -- Only run scripts of type 'pre' if the database exists, otherwise skip. post scripts are always run.
-    IF @DBEXISTS=1 AND 'pre'='pre' AND OBJECT_ID(N'dbo._MigrationScriptsHistory', N'U') IS NOT NULL OR 'pre'='post'
+    IF @DBEXISTS=1 AND 'post'='pre' AND OBJECT_ID(N'dbo._MigrationScriptsHistory', N'U') IS NOT NULL OR 'post'='post'
     BEGIN
         -- Check if the script was already run in previous migrations
         IF NOT EXISTS(SELECT *
                         FROM dbo.[_MigrationScriptsHistory]
-                        WHERE [ScriptNameId] = 'PreScripts\20171016123600_Initial_Setup.sql')
+                        WHERE [ScriptNameId] = 'PostScripts\20171016123600_SetupInitialData.sql')
         BEGIN
             -- Run the new migration script
             PRINT '------------------ RUN --------------------------'
-            PRINT 'Script Id:      PreScripts\20171016123600_Initial_Setup.sql'
-            PRINT 'Script Name:    20171016123600_Initial_Setup.sql'
+            PRINT 'Script Id:      PostScripts\20171016123600_SetupInitialData.sql'
+            PRINT 'Script Name:    20171016123600_SetupInitialData.sql'
             PRINT 'Order Criteria: 20171016123600'
-            PRINT 'Script Type:    pre'
-            PRINT 'Script Path:    C:\Users\NTG\source\repos\BEJS_Core_DataBase\BEJS_Core_DataBase\Scripts\PreScripts\20171016123600_Initial_Setup.sql'
-            PRINT 'Script Hash:    FtZ5yB+xpknBlTpdwS/yeQ=='
+            PRINT 'Script Type:    post'
+            PRINT 'Script Path:    C:\Users\NTG\source\repos\AdventureWorks_DataBase\AdventureWorks_DataBase\Scripts\PostScripts\20171016123600_SetupInitialData.sql'
+            PRINT 'Script Hash:    hS0MUZNFcGCbbj3MjSfmPQ=='
         
-            PRINT ' > Start pre-script run....'
-            exec('PRINT ''Initial setup pre-script''')
-            PRINT ' > Finished pre-script run....'
+            PRINT ' > Start post-script run....'
+            exec('PRINT ''Initial setup Post-script''')
+            PRINT ' > Finished post-script run....'
         
             -- Register the script in the migration script history table to prevent duplicate runs
             PRINT ' > Register script in migration history table.'
             INSERT INTO dbo.[_MigrationScriptsHistory]
-            VALUES('PreScripts\20171016123600_Initial_Setup.sql', GETDATE(), 'FtZ5yB+xpknBlTpdwS/yeQ==')
+            VALUES('PostScripts\20171016123600_SetupInitialData.sql', GETDATE(), 'hS0MUZNFcGCbbj3MjSfmPQ==')
 
             PRINT '----------------- END RUN ------------------------'
             PRINT '|'
@@ -70,16 +70,16 @@ BEGIN TRY
             -- The script was already run. Check if script hash has changed meanwhile.
             IF NOT EXISTS(SELECT *
                             FROM dbo.[_MigrationScriptsHistory]
-                            WHERE [ScriptHash] = 'FtZ5yB+xpknBlTpdwS/yeQ==')
+                            WHERE [ScriptHash] = 'hS0MUZNFcGCbbj3MjSfmPQ==')
             BEGIN
                 IF 1!=0
-                    RAISERROR ('ERROR: The hash value for the pre migration script 20171016123600_Initial_Setup.sql does not match with the origin registered and executed script.', 18, 1);
+                    RAISERROR ('ERROR: The hash value for the post migration script 20171016123600_SetupInitialData.sql does not match with the origin registered and executed script.', 18, 1);
                 ELSE
                     -- SEVERITY 0-9 is treated as warning
-                    RAISERROR ('WARNING: The hash value for the pre migration script 20171016123600_Initial_Setup.sql does not match with the past registered and executed script.', 5, 1);
+                    RAISERROR ('WARNING: The hash value for the post migration script 20171016123600_SetupInitialData.sql does not match with the past registered and executed script.', 5, 1);
             END
         
-            PRINT 'Skip pre-script 20171016123600_Initial_Setup.sql (already executed)'
+            PRINT 'Skip post-script 20171016123600_SetupInitialData.sql (already executed)'
         END
     END
 END TRY
@@ -92,7 +92,7 @@ BEGIN CATCH
            @ErrorSeverity = ERROR_SEVERITY(),
            @ErrorState = ERROR_STATE();
 
-    -- Rollback all transactions if any of the pre scripts failed.
+    -- Rollback all transactions if any of the post scripts failed.
     IF @@TRANCOUNT > 0  
         ROLLBACK TRANSACTION;
 
@@ -100,7 +100,7 @@ BEGIN CATCH
 
 END CATCH;
 
--- Commit transaction if all pre scripts have been successfully run.
+-- Commit transaction if all post scripts have been successfully run.
 IF @@TRANCOUNT > 0  
     COMMIT TRANSACTION;  
 GO
