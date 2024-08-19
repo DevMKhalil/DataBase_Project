@@ -96,6 +96,7 @@
   <ItemGroup>
     <None Include="Scripts.targets" />
     <None Include="ssdt.migration.scripts.json" />
+    <None Include="Scripts\ReferenceDataScripts\2_Production.Culture.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\PostScripts\20171016123600_SetupInitialData.sql" />
