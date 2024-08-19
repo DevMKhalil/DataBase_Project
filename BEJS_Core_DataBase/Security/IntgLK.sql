@@ -1,3 +1,0 @@
-﻿CREATE SCHEMA [IntgLK]
-    AUTHORIZATION [dbo];
-

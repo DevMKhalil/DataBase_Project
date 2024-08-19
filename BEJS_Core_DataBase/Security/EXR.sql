@@ -1,3 +1,0 @@
-﻿CREATE SCHEMA [EXR]
-    AUTHORIZATION [dbo];
-

@@ -1,3 +1,0 @@
-﻿CREATE SCHEMA [NVOC]
-    AUTHORIZATION [dbo];
-

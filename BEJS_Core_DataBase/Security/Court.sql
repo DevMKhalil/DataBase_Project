@@ -1,3 +1,0 @@
-﻿CREATE SCHEMA [Court]
-    AUTHORIZATION [dbo];
-

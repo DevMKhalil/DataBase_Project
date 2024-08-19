@@ -1,3 +1,0 @@
-﻿CREATE SCHEMA [DhmnLK]
-    AUTHORIZATION [dbo];
-

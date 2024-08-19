@@ -1,3 +1,0 @@
-﻿CREATE SCHEMA [JREC]
-    AUTHORIZATION [dbo];
-
